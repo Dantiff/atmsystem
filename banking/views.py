@@ -32,8 +32,12 @@ def register_page(request):
     )
 
 def login_page(request):
+    form = LoginForm()
+    variables = RequestContext(request, {
+    'form': form
+    })
     return render_to_response(
-    'login.html',
+    'login.html', variables,
     )
 
 def about_page(request):

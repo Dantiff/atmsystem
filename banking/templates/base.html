@@ -1,18 +1,25 @@
+{% load staticfiles %}
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
 <title>Banking | {% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
 <div id="nav">
-<a href="/">home</a> |
+<h1>
+<a href="/">Home</a> |
 {% if user.is_authenticated %}
 Welcome {{ user.username }}
-(<a href="/logout">logout</a>)
+(<a href="/logout">Logout</a>)
 {% else %}
-<a href="/login/">login</a> |
-<a href="/register/">register</a>
+<a href="/login/">Login</a> |
+<a href="/register/">Register</a>
 {% endif %}
+</h1>
 </div>
 <h1>{% block head %}{% endblock %}</h1>
 {% block content %}{% endblock %}
