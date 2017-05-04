@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC>
+<html>
+<head>
+<title>Banking | {% block title %}{% endblock %}</title>
+</head>
+<body>
+<div id="nav">
+<a href="/">home</a> |
+{% if user.is_authenticated %}
+Welcome {{ user.username }}
+(<a href="/logout">logout</a>)
+{% else %}
+<a href="/login/">login</a> |
+<a href="/register/">register</a>
+{% endif %}
+</div>
+<h1>{% block head %}{% endblock %}</h1>
+{% block content %}{% endblock %}
+</body>
+</html>

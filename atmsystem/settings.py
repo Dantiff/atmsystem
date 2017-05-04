@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import django.contrib.auth
+
+#Redirect user to login page if they are not logged in
+django.contrib.auth.LOGIN_URL = '/login/'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,6 +29,9 @@ SECRET_KEY = '@#eo3z5-4-@ov+2nwdjfml1&=w0084kv9bto8kc%h97(op)&yu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#Set site ID
+SITE_ID = 1
+
 ALLOWED_HOSTS = [u'carlif.pythonanywhere.com']
 
 
@@ -38,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'banking',
+    'django.contrib.sites',
+
 ]
 
 MIDDLEWARE = [
@@ -80,7 +89,15 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'carlif$atmsystem',
+        'USER': 'carlif',
+        'PASSWORD': 'dantifdantif',
+        'HOST': 'carlif.mysql.pythonanywhere-services.com',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

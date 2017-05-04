@@ -1,12 +1,11 @@
-<!-- Banking/templates/index.html -->
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Banking!</title>
-    </head>
-    <body>
-        <h1>Bankers! I am Learning Django!</h1>
-        <a href="/about/">About Me</a>
-    </body>
-</html>
+{%extends "base.html" %}
+{%block title %}Welcome to ATM Banking{% endblock %}
+{%block head %}Welcome to ATM Banking{% endblock %}
+{%block content %}
+{% if user.username %}
+<p>Welcome {{ user.username }}!Lets begin your transactions:</p>
+{% else %}
+<p>Welcome anonymous user!
+You need to login</p><br/>
+{% endif %}
+{% endblock %}
