@@ -5,10 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 
 class RegistrationForm(forms.Form):
 
-    username = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Username"), error_messages={ 'invalid': _("This value must contain only letters, numbers and underscores.") })
-    email = forms.EmailField(widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Email address"))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Password"))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Password (again)"))
+    username = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs={'required':True, 'max_length':30, 'class' : 'form-control', 'placeholder': 'Username'}), label=_("Username"), error_messages={ 'invalid': _("This value must contain only letters, numbers and underscores.") })
+    email = forms.EmailField(widget=forms.TextInput(attrs={'required':True, 'max_length':30, 'class' : 'form-control', 'placeholder': 'john@example.com'}), label=_("Email address"))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'required':True, 'max_length':30, 'render_value':False, 'class' : 'form-control', 'placeholder': '**********'}), label=_("Password"))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'required':True, 'max_length':30, 'render_value':False, 'class' : 'form-control', 'placeholder': '**********'}), label=_("Password (again)"))
 
     def clean_username(self):
         try:
@@ -25,5 +25,5 @@ class RegistrationForm(forms.Form):
 
 class LoginForm(forms.Form):
 
-    username = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Username"), error_messages={ 'invalid': _("This username does not exist.") })
-    password = forms.CharField(widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Password"))
+    username = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs={'required':True, 'max_length':30, 'class' : 'form-control', 'placeholder': 'Username/email'}), error_messages={ 'invalid': _("This username does not exist.") })
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'required':True, 'max_length':30, 'render_value':False,'class' : 'form-control', 'placeholder': '*********'}))

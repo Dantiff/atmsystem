@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC>
 <html lang="en">
 <head>
-<title>Banking | {% block title %}{% endblock %}</title>
+<title>Misty | {% block title %}{% endblock %}</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta charset="UTF-8">
@@ -69,8 +69,8 @@
                 <span class="maxim">Welcome {{ user.username }}</span>
                 (<a href="/logout">Logout</a>)
                 {% else %}
-				<li><a href="#register" class="smoothScroll">Register</a></li>
-				<li><a href="#login" class="smoothScroll">Login</a></li>
+				<li><a href="/register/" class="smoothScroll">Register</a></li>
+				<li><a href="/login/" class="smoothScroll">Login</a></li>
                 {% endif %}
 			</ul>
 
@@ -87,9 +87,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
-				<h3 class="wow bounceIn" data-wow-delay="0.9s">Mistyn banking system. Your Online Banking Partner </h3>
+				<h3 class="wow bounceIn" data-wow-delay="0.9s">Misty banking system. Your Online Banking Partner </h3>
 				<h1 class="wow fadeInUp" data-wow-delay="1.6s"><span class="maxim">"You grind, we bank"</span></h1>
-				<a href="#overview" class="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs" data-wow-delay="2.3s">LEARN MORE</a>
+				<a href="#about" class="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs" data-wow-delay="2.3s">LEARN MORE</a>
 				<a href="#register" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">REGISTER NOW</a>
 			</div>
 		</div>
@@ -97,78 +97,14 @@
 </section>
 
 
-<div id="nav">
-<h1>
-<a href="/">Home</a> |
-{% if user.is_authenticated %}
-Welcome {{ user.username }}
-(<a href="/logout">Logout</a>)
-{% else %}
-<a href="/login/">Login</a> |
-<a href="/register/">Register</a>
-{% endif %}
-</h1>
-</div>
+
+<!-- =========================
+    EXTEND THE TEMPLATE
+============================== -->
+
 <h1>{% block head %}{% endblock %}</h1>
 {% block content %}{% endblock %}
 
-
-
-
-<!-- =========================
-    LOGIN SECTION
-============================== -->
-<section id="login" class="parallax-section">
-	<div class="container">
-		<div class="row">
-		    <div class="wow fadeInLeft col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.9s">
-				<h2>Login</h2>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat.</p>
-
-				<form action="#" method="post">
-					<input name="username" type="text" class="form-control" id="username" placeholder="Username/email">
-					<input name="password" type="password" class="form-control" id="password" placeholder="*********">
-					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
-						<input name="submit" type="submit" class="form-control" id="submit" value="LOGIN">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</section>
-
-
-
-<!-- =========================
-   REGISTER SECTION
-============================== -->
-<section id="register" class="parallax-section">
-	<div class="container">
-		<div class="row">
-
-			<div class="wow fadeInUp col-md-7 col-sm-7" data-wow-delay="0.6s">
-				<h2>Register Here</h2>
-				<h3>Nunc eu nibh vel augue mollis tincidunt id efficitur tortor. Sed pulvinar est sit amet tellus iaculis hendrerit.</h3>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet consectetuer diam nonummy.</p>
-			</div>
-
-			<div class="wow fadeInUp col-md-5 col-sm-5" data-wow-delay="1s">
-				<form action="#" method="post">
-					<input name="firstname" type="text" class="form-control" id="firstname" placeholder="First Name">
-					<input name="lastname" type="text" class="form-control" id="lastname" placeholder="Last Name">
-					<input name="phone" type="telephone" class="form-control" id="phone" placeholder="Phone Number">
-					<input name="email" type="email" class="form-control" id="email" placeholder="Email Address">
-					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
-						<input name="submit" type="submit" class="form-control" id="submit" value="REGISTER">
-					</div>
-				</form>
-			</div>
-
-			<div class="col-md-1"></div>
-
-		</div>
-	</div>
-</section>
 
 
 <!-- =========================
@@ -204,7 +140,7 @@ Welcome {{ user.username }}
                         </ul>
                     </div>
                 </div>
-                <a href="#home">Go back home</a>
+                <a href="#intro">Go back home</a>
 
 			</div>
 

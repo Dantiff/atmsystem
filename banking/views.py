@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 
 
-@csrf_protect
+#@csrf_protect
 def register_page(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -23,7 +23,7 @@ def register_page(request):
     else:
         form = RegistrationForm()
     variables = RequestContext(request, {
-    'form': form
+    'reg_form': form
     })
 
     return render_to_response(
@@ -34,7 +34,7 @@ def register_page(request):
 def login_page(request):
     form = LoginForm()
     variables = RequestContext(request, {
-    'form': form
+    'login_form': form
     })
     return render_to_response(
     'login.html', variables,
@@ -49,7 +49,7 @@ def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-@login_required
+#@login_required
 def home_page(request):
     reg_form = RegistrationForm()
     login_form = LoginForm()

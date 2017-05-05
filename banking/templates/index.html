@@ -1,11 +1,61 @@
 {%extends "base.html" %}
-{%block title %}Welcome to ATM Banking{% endblock %}
-{%block head %}Welcome to ATM Banking{% endblock %}
+{%block title %}Home{% endblock %}
+
 {%block content %}
-{% if user.username %}
-<p>Welcome {{ user.username }}!Lets begin your transactions:</p>
-{% else %}
-<p>Welcome anonymous user!
-You need to login</p><br/>
-{% endif %}
+
+
+
+<!-- =========================
+    LOGIN SECTION
+============================== -->
+<section id="login" class="parallax-section">
+	<div class="container">
+		<div class="row">
+		    <div class="wow fadeInLeft col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.9s">
+				<h2>Login</h2>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat.</p>
+
+				<form action="/login/" method="post"> {% csrf_token %}
+					{{ login_form }}
+					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
+						<input name="submit" type="submit" class="form-control" id="submit" value="LOGIN">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<!-- =========================
+   REGISTER SECTION
+============================== -->
+<section id="register" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-7 col-sm-7" data-wow-delay="0.6s">
+			    <h2>Register Here</h2>
+				<h3>Nunc eu nibh vel augue mollis tincidunt id efficitur tortor. Sed pulvinar est sit amet tellus iaculis hendrerit.</h3>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet consectetuer diam nonummy.</p>
+			</div>
+
+			<div class="wow fadeInUp col-md-5 col-sm-5" data-wow-delay="1s">
+				<form method="post" action="/register/">{% csrf_token %}
+					{{ reg_form }}
+					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
+						<input name="submit" type="submit" class="form-control" id="submit" value="REGISTER">
+					</div>
+				</form>
+			</div>
+
+			<div class="col-md-1"></div>
+
+		</div>
+	</div>
+</section>
+
+
+
 {% endblock %}
