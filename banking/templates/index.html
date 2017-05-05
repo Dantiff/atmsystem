@@ -3,7 +3,7 @@
 
 {%block content %}
 
-
+{% if not user.is_authenticated %}
 
 <!-- =========================
     LOGIN SECTION
@@ -56,6 +56,6 @@
 	</div>
 </section>
 
-
+{% endif %}
 
 {% endblock %}

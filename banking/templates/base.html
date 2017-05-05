@@ -62,12 +62,11 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#intro" class="smoothScroll">Home</a></li>
 				<li><a href="#overview" class="smoothScroll">Overview</a></li>
-				<li><a href="#speakers" class="smoothScroll">Speakers</a></li>
-				<li><a href="#program" class="smoothScroll">Programs</a></li>
+				<li><a href="#program" class="smoothScroll">Accounts</a></li>
 				<li><a href="#about" class="smoothScroll">About</a></li>
 				{% if user.is_authenticated %}
-                <span class="maxim">Welcome {{ user.username }}</span>
-                (<a href="/logout">Logout</a>)
+                <li><a class="maxim" href="/logout">Welcome {{ user.username }} (<span class="maxim">Logout</span>)</a>
+                </li>
                 {% else %}
 				<li><a href="/register/" class="smoothScroll">Register</a></li>
 				<li><a href="/login/" class="smoothScroll">Login</a></li>
@@ -90,7 +89,11 @@
 				<h3 class="wow bounceIn" data-wow-delay="0.9s">Misty banking system. Your Online Banking Partner </h3>
 				<h1 class="wow fadeInUp" data-wow-delay="1.6s"><span class="maxim">"You grind, we bank"</span></h1>
 				<a href="#about" class="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs" data-wow-delay="2.3s">LEARN MORE</a>
+				{% if user.is_authenticated %}
+				<a href="#register" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">GO TO ACCOUNT</a>
+                {% else %}
 				<a href="#register" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">REGISTER NOW</a>
+                {% endif %}
 			</div>
 		</div>
 	</div>

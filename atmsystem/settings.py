@@ -16,6 +16,9 @@ import django.contrib.auth
 #Redirect user to login page if they are not logged in
 django.contrib.auth.LOGIN_URL = '/login/'
 
+#Set the login redirect url
+LOGIN_REDIRECT_URL = '/'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
