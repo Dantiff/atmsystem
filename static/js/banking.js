@@ -19,6 +19,10 @@ $(window).load(function(){
         $.scrollTo("section[name = login_form]");
     }
 
+    if (url = "http://carlif.pythonanywhere.com/account/") {
+        $.scrollTo("section[name = account]");
+    }
+
 
 });
 

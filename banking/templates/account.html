@@ -1,0 +1,28 @@
+{%extends "base.html" %}
+{%block title %}Account{% endblock %}
+
+{%block content %}
+
+{% if user.is_authenticated %}
+
+<!-- =========================
+    MY-ACCOUNT SECTION
+============================== -->
+<section id="account" name="account" class="parallax-section">
+	<div class="container">
+		<div class="row">
+		    <div class="wow fadeInLeft col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.9s">
+				<h3 class="maxin">Welcome {{user.username}}</h3>
+				<p> </p>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+{% endif %}
+
+{% endblock %}

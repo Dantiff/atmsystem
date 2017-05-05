@@ -402,7 +402,6 @@ footer {
 
 
 
-
 /*---------------------------------------
     Login section
 -----------------------------------------*/
@@ -449,6 +448,24 @@ footer {
   color: #222;
 }
 
+
+
+/*---------------------------------------
+    Account section
+-----------------------------------------*/
+
+#account {
+    background: url('../images/login.jpg') 50% 0 repeat-y fixed;
+    background-size: cover;
+    background-position: center center;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+#account p {
+  padding-top: 12px;
+  padding-bottom: 18px;
+}
 
 
 /*---------------------------------------

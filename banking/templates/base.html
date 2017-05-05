@@ -62,7 +62,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#intro" class="smoothScroll">Home</a></li>
 				<li><a href="#overview" class="smoothScroll">Overview</a></li>
-				<li><a href="#program" class="smoothScroll">Accounts</a></li>
+				<li><a href="/account/" class="smoothScroll">Accounts</a></li>
 				<li><a href="#about" class="smoothScroll">About</a></li>
 				{% if user.is_authenticated %}
                 <li><a class="maxim" href="/logout">Welcome {{ user.username }} (<span class="maxim">Logout</span>)</a>
@@ -90,7 +90,7 @@
 				<h1 class="wow fadeInUp" data-wow-delay="1.6s"><span class="maxim">"You grind, we bank"</span></h1>
 				<a href="#about" class="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs" data-wow-delay="2.3s">LEARN MORE</a>
 				{% if user.is_authenticated %}
-				<a href="#register" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">GO TO ACCOUNT</a>
+				<a href="/account/" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">GO TO ACCOUNT</a>
                 {% else %}
 				<a href="#register" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">REGISTER NOW</a>
                 {% endif %}
@@ -120,7 +120,7 @@
 			<div class="wow fadeInLeft col-md-offset-2 col-md-8 col-sm-8" data-wow-delay="0.9s" class="center">
 				<h2 class="center">About</h2>
 
-                <h3>Welcome to the ATM System</h3>
+                <h3>Welcome to Misty Banking</h3>
                 <div class="row">
                     <span class="padding-15 col-sm-12">Here, we support transactions directly from your bank. Some of the primary features you expect to find in this system include: </span>
 

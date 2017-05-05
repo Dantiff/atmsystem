@@ -69,6 +69,10 @@ def home_page(request):
     return render_to_response('index.html', variables)
 
 
+@login_required(login_url="login/")
+def account_page(request):
+    variables = RequestContext(request, { 'user': request.user })
+    return render_to_response('account.html', variables)
 
 
 
