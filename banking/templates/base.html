@@ -32,11 +32,13 @@
 <!-- =========================
      PRE LOADER
 ============================== -->
+{% if not user.is_authenticated %}
 <div class="preloader">
 
 	<div class="sk-rotating-plane"></div>
 
 </div>
+{% endif %}
 
 
 <!-- =========================
@@ -52,7 +54,7 @@
 				<span class="icon icon-bar"></span>
 				<span class="icon icon-bar"></span>
 			</button>
-			<a href="#" class="navbar-brand">Legister Banking</a>
+			<a href="#" class="navbar-brand">Misty Banking</a>
 		</div>
 
 		<div class="collapse navbar-collapse">
@@ -62,10 +64,14 @@
 				<li><a href="#overview" class="smoothScroll">Overview</a></li>
 				<li><a href="#speakers" class="smoothScroll">Speakers</a></li>
 				<li><a href="#program" class="smoothScroll">Programs</a></li>
+				<li><a href="#about" class="smoothScroll">About</a></li>
+				{% if user.is_authenticated %}
+                <span class="maxim">Welcome {{ user.username }}</span>
+                (<a href="/logout">Logout</a>)
+                {% else %}
 				<li><a href="#register" class="smoothScroll">Register</a></li>
-				<li><a href="#venue" class="smoothScroll">Venue</a></li>
-				<li><a href="#sponsors" class="smoothScroll">Sponsors</a></li>
-				<li><a href="#contact" class="smoothScroll">Contact</a></li>
+				<li><a href="#login" class="smoothScroll">Login</a></li>
+                {% endif %}
 			</ul>
 
 		</div>
@@ -75,13 +81,13 @@
 
 
 <!-- =========================
-    INTRO SECTION
+    HOME SECTION
 ============================== -->
 <section id="intro" class="parallax-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
-				<h3 class="wow bounceIn" data-wow-delay="0.9s">Legister banking system. Your Online Banking Partner </h3>
+				<h3 class="wow bounceIn" data-wow-delay="0.9s">Mistyn banking system. Your Online Banking Partner </h3>
 				<h1 class="wow fadeInUp" data-wow-delay="1.6s"><span class="maxim">"You grind, we bank"</span></h1>
 				<a href="#overview" class="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs" data-wow-delay="2.3s">LEARN MORE</a>
 				<a href="#register" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">REGISTER NOW</a>
@@ -105,6 +111,107 @@ Welcome {{ user.username }}
 </div>
 <h1>{% block head %}{% endblock %}</h1>
 {% block content %}{% endblock %}
+
+
+
+
+<!-- =========================
+    LOGIN SECTION
+============================== -->
+<section id="login" class="parallax-section">
+	<div class="container">
+		<div class="row">
+		    <div class="wow fadeInLeft col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.9s">
+				<h2>Login</h2>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat.</p>
+
+				<form action="#" method="post">
+					<input name="username" type="text" class="form-control" id="username" placeholder="Username/email">
+					<input name="password" type="password" class="form-control" id="password" placeholder="*********">
+					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
+						<input name="submit" type="submit" class="form-control" id="submit" value="LOGIN">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<!-- =========================
+   REGISTER SECTION
+============================== -->
+<section id="register" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-7 col-sm-7" data-wow-delay="0.6s">
+				<h2>Register Here</h2>
+				<h3>Nunc eu nibh vel augue mollis tincidunt id efficitur tortor. Sed pulvinar est sit amet tellus iaculis hendrerit.</h3>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet consectetuer diam nonummy.</p>
+			</div>
+
+			<div class="wow fadeInUp col-md-5 col-sm-5" data-wow-delay="1s">
+				<form action="#" method="post">
+					<input name="firstname" type="text" class="form-control" id="firstname" placeholder="First Name">
+					<input name="lastname" type="text" class="form-control" id="lastname" placeholder="Last Name">
+					<input name="phone" type="telephone" class="form-control" id="phone" placeholder="Phone Number">
+					<input name="email" type="email" class="form-control" id="email" placeholder="Email Address">
+					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
+						<input name="submit" type="submit" class="form-control" id="submit" value="REGISTER">
+					</div>
+				</form>
+			</div>
+
+			<div class="col-md-1"></div>
+
+		</div>
+	</div>
+</section>
+
+
+<!-- =========================
+    ABOUT SECTION
+============================== -->
+<section id="about" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="wow fadeInLeft col-md-offset-2 col-md-8 col-sm-8" data-wow-delay="0.9s" class="center">
+				<h2 class="center">About</h2>
+
+                <h3>Welcome to the ATM System</h3>
+                <div class="row">
+                    <span class="padding-15 col-sm-12">Here, we support transactions directly from your bank. Some of the primary features you expect to find in this system include: </span>
+
+			        <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.5s">
+                        <ul>
+                            <li> Logging in  </li>
+                            <li> Withdrawing money </li>
+                        </ul>
+                    </div>
+                    <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="1s">
+                        <ul>
+                            <li> Depositing money </li>
+                            <li> Checking balance </li>
+                        </ul>
+                    </div>
+                    <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="1.5s">
+                        <ul>
+                            <li> Transferring money </li>
+                            <li> Storing credentials securely </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#home">Go back home</a>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+
 
 
 <!-- =========================

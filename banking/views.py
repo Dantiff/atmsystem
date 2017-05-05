@@ -51,7 +51,17 @@ def logout_page(request):
 
 @login_required
 def home_page(request):
-    return render_to_response(
-    'index.html',
-    { 'user': request.user }
-    )
+    reg_form = RegistrationForm()
+    login_form = LoginForm()
+    variables = RequestContext(request, {
+        'login_form': login_form,
+        'reg_form': reg_form,
+        'user': request.user
+        })
+    return render_to_response('index.html', variables)
+
+
+
+
+
+
