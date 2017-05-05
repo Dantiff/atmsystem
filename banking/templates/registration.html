@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}User Registration{% endblock %}
 {% block content %}
- <section id="register" class="parallax-section">
+ <section id="register" class="parallax-section" name="reg_form">
 	<div class="container">
 		<div class="row">
 			<div class="wow fadeInUp col-md-7 col-sm-7" data-wow-delay="0.6s">
@@ -10,13 +10,6 @@
 				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet consectetuer diam nonummy.</p>
 			</div>
 			<div class="wow fadeInUp col-md-5 col-sm-5" data-wow-delay="1s">
-			    {% if form.subject.errors %}
-                    <ol>
-                    {% for error in form.subject.errors %}
-                        <li><strong>{{ error|escape }}</strong></li>
-                    {% endfor %}
-                    </ol>
-                {% endif %}
 				<form method="post" action="/register/">{% csrf_token %}
 					{{ reg_form }}
 					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
