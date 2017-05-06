@@ -1,6 +1,8 @@
 
 # banking/views.py - Views for the banking app
 from banking.forms import *
+from banking.models import *
+from banking.transactions import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
@@ -8,6 +10,9 @@ from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from django.contrib import messages
+import string
+import random
 
 
 #@csrf_protect
@@ -68,11 +73,46 @@ def home_page(request):
         })
     return render_to_response('index.html', variables)
 
+@login_required(login_url="/login/")
+def account_create_page(request):
+    if request.method == 'POST':
 
-@login_required(login_url="login/")
+        if Account.objects.filter(acc_owner=request.user).count() > 0:
+            messages.add_message(request, messages.INFO, 'You can only create one account')
+            messages.warning(request, 'You already have an account.')
+            return HttpResponseRedirect('/account/')
+
+        acc_form = AccountCreateForm(request.POST)
+        if acc_form.is_valid():
+            account = Account(
+            acc_name=acc_form.cleaned_data['acc_name'],
+            acc_balance=acc_form.cleaned_data['acc_balance'],
+            acc_owner=request.user,
+            acc_number=''.join(random.choice(string.digits) for _ in range(12))
+            )
+            account.save()
+            return HttpResponseRedirect('/account/')
+    else:
+        acc_form = AccountCreateForm()
+    variables = RequestContext(request, {
+        'acc_form': acc_form,
+        'user': request.user })
+    return render_to_response('account_create.html', variables)
+
+
+@login_required(login_url="/login/")
 def account_page(request):
-    variables = RequestContext(request, { 'user': request.user })
-    return render_to_response('account.html', variables)
+    if Account.objects.filter(acc_owner=request.user).count() <= 0:
+        messages.add_message(request, messages.INFO, 'Please create an account first')
+        messages.warning(request, 'Please create an account first')
+        return HttpResponseRedirect('/account/create/')
+    else:
+        account = Account.objects.get(acc_owner=request.user)
+        variables = RequestContext(request, {
+            'user': request.user,
+            'account': account
+            })
+        return render_to_response('account.html', variables)
 
 
 

@@ -10,12 +10,49 @@
 ============================== -->
 <section id="account" name="account" class="parallax-section">
 	<div class="container">
-		<div class="row">
-		    <div class="wow fadeInLeft col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.9s">
-				<h3 class="maxin">Welcome {{user.username}}</h3>
-				<p> </p>
+	    <div class="wow fadeInLeft col-md-offset-1 col-md-10 col-sm-10" data-wow-delay="0.6s">
+	        <h1 class="lobster">ATM <small>24 Hour Banking</small></h1>
+	    </div>
+	    <div class="wow fadeInLeft col-md-12 col-sm-12" data-wow-delay="0.6s">
+	        <h2 class=" text-uppercase text-center"> Account: {{account.acc_name}} </h2>
+	        <h6 class="text-center"> {{account.acc_number}} </h6>
+	    </div>
 
-			</div>
+	    <div class="tile wow fadeInUp col-md-offset-1 col-md-10 col-sm-10" data-wow-delay="1.5s">
+	        <h4 class="text-uppercase balance text-center errorlist"><span>Balance</span> Ksh. {{ account.acc_balance }}</h4>
+	    </div>
+		<div class="row">
+		    <div class="wow fadeInLeft col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+              <div class="tile">
+                  <blockquote>
+                    <h3>Deposit Money</h3>
+                    <h3 class="tile-title">Cash</h3>
+                    <p>Use this option to deposit cash monies.</p>
+                    <a href="/account/deposit/"> <button class="proceed"> Proceed &raquo; </button></a>
+                  </blockquote>
+              </div>
+		    </div>
+
+		    <div class="wow fadeInUp col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1.5s">
+              <div class="tile">
+		        <blockquote>
+                    <h3>Withdraw Money</h3>
+                    <h3 class="tile-title">Cash</h3>
+                    <p>Use this option to withdraw cash monies.</p>
+                    <a href="/account/withdraw/"><button class="proceed"> Proceed &raquo; </button></a>
+                </blockquote>
+              </div>
+		    </div>
+
+		    <div class="wow fadeInRight col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+		        <blockquote>
+                    <h3>Transfer Money</h3>
+                    <h3 class="tile-title">Cash</h3>
+                    <p>Use this option to transfer cash monies.</p>
+                    <a href="/account/transfer/"><button class="proceed"> Proceed &raquo; </button></a>
+                </blockquote>
+		    </div>
+
 		</div>
 	</div>
 </section>

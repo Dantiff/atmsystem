@@ -27,3 +27,9 @@ class LoginForm(forms.Form):
 
     username = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs={'required':True, 'max_length':30, 'class' : 'form-control', 'placeholder': 'Username/email'}), error_messages={ 'invalid': _("This username does not exist.") })
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required':True, 'max_length':30, 'render_value':False,'class' : 'form-control', 'placeholder': '*********'}))
+
+class AccountCreateForm(forms.Form):
+
+    acc_name = forms.CharField(widget=forms.TextInput(attrs={'required':True, 'max_length':80, 'class' : 'form-control', 'placeholder': 'Account name'}), label=_("Account name"), error_messages={ 'invalid': _("This value must contain only letters, numbers and underscores.") })
+    acc_balance = forms.IntegerField(widget=forms.TextInput(attrs={'required':True, 'max_length':80, 'class' : 'form-control', 'placeholder': 'Ksh. 1,000,000'}), label=_("Amount to deposit"), error_messages={ 'invalid': _("This value must contain only numbers.") })
+
