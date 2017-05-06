@@ -11,4 +11,7 @@ urlpatterns = [
     url(r'^register/$', views.register_page),
     url(r'^account/create/$', views.account_create_page),
     url(r'^account/$', views.account_page),
+    url(r'^account/deposit/$', views.deposit_page),
+    url(r'^account/withdraw/$', views.withdraw_page),
+    url(r'^account/deposit/$', views.transfer_page),
 ]

@@ -1,0 +1,42 @@
+{%extends "base.html" %}
+{%block title %}Transfer{% endblock %}
+
+{%block content %}
+
+{% if user.is_authenticated %}
+
+<!-- =========================
+    TRANFER SECTION
+============================== -->
+<section id="transaction" name="transfer" class="parallax-section">
+	<div class="container">
+	    <div class="wow fadeInLeft col-md-offset-1 col-md-10 col-sm-10" data-wow-delay="0.6s">
+	        <h1 class="lobster">ATM <small>24 Hour Banking</small></h1>
+	    </div><div class="row">
+		    <div class="wow fadeInLeft col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.6s">
+				<h3>Transfer Cash</h3>
+
+				<form action="." method="post"> {% csrf_token %}
+				    <label for="account">Trasfer from:</label>
+				    <input type="text" class="form-control" name="account" value="{{ account.acc_name }}"
+					{{ transfer_form }}
+					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
+						<input name="submit" type="submit" class="form-control" id="submit" value="Tranfer">
+					</div>
+				</form>
+			</div>
+
+		    <div class="wow fadeInUp hidden-xs col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+              <blockquote class="lobster">
+                  "When you're in a commodity business, the only way to thrive is to be a low-cost producer. And when you're selling money, you're in a commodity business."
+                  <br><strong class="float-right">-- Duff McDonald</strong>
+              </blockquote>
+		    </div>
+		</div>
+		</div>
+	</div>
+</section>
+
+{% endif %}
+
+{% endblock %}

@@ -100,6 +100,10 @@ def account_create_page(request):
     return render_to_response('account_create.html', variables)
 
 
+def get_account(request):
+    return Account.objects.get(acc_owner=request.user)
+
+
 @login_required(login_url="/login/")
 def account_page(request):
     if Account.objects.filter(acc_owner=request.user).count() <= 0:
@@ -107,13 +111,77 @@ def account_page(request):
         messages.warning(request, 'Please create an account first')
         return HttpResponseRedirect('/account/create/')
     else:
-        account = Account.objects.get(acc_owner=request.user)
+        account = get_account(request)
         variables = RequestContext(request, {
             'user': request.user,
             'account': account
             })
         return render_to_response('account.html', variables)
 
+
+@login_required(login_url="/login/")
+def deposit_page(request):
+    if request.method == "POST":
+        form = DepositForm(request.POST)
+        if form.is_valid():
+            amount = form.cleaned_data['amount']
+            transaction = CurrentAccount
+            CurrentAccount.deposit(transaction, amount, request)
+            return HttpResponseRedirect('/account/')
+    else:
+        form = DepositForm()
+        account = get_account(request)
+    variables = RequestContext(request, {
+        'user': request.user,
+        'deposit_form': form,
+        'account': account
+        })
+    return render_to_response( 'deposit.html', variables )
+
+
+@login_required(login_url="/login/")
+def withdraw_page(request):
+    if request.method == "POST":
+        form = WithdrawForm(request.POST)
+        if form.is_valid():
+            amount = form.cleaned_data['amount']
+            transaction = CurrentAccount
+            CurrentAccount.withdraw(transaction, amount, request)
+            return HttpResponseRedirect('/account/')
+    else:
+        form = WithdrawForm()
+        account = get_account(request)
+    variables = RequestContext(request, {
+        'user': request.user,
+        'withdraw_form': form,
+        'account': account
+        })
+    return render_to_response( 'withdraw.html', variables )
+
+
+
+
+@login_required(login_url="/login/")
+def transfer_page(request):
+    if request.method == "POST":
+        form = TransferForm(request.POST)
+        if form.is_valid():
+            amount = form.cleaned_data['amount']
+            recipient = form.cleaned_data['recipient']
+            acc_number = form.cleaned_data['accNumber']
+
+            transaction = CurrentAccount
+            CurrentAccount.transfer(transaction, request, amount, recipient, acc_number)
+            return HttpResponseRedirect('/account/')
+    else:
+        form = TransferForm()
+        account = get_account(request)
+    variables = RequestContext(request, {
+        'user': request.user,
+        'transfer_form': form,
+        'account': account
+        })
+    return render_to_response( 'transfer.html', variables )
 
 
 

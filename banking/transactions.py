@@ -1,3 +1,8 @@
+
+from django.contrib.auth.models import User
+from banking.models import Account
+
+
 class BankAccount(object):
     def __init__(self):
         pass
@@ -6,48 +11,23 @@ class BankAccount(object):
     def deposit():
         pass
 
-class SavingsAccount(BankAccount):
-
-    def __init__(self):
-        self.balance = 500
-
-    def deposit(self, amount):
-        if (amount < 0):
-            return "Invalid deposit amount"
-        else:
-            self.balance += amount
-            return self.balance
-
-    def withdraw(self, amount):
-        if ((self.balance - amount) > 0) and ((self.balance - amount) < 500):
-            return "Cannot withdraw beyond the minimum account balance"
-        elif (self.balance - amount) < 0:
-            return "Cannot withdraw beyond the current account balance"
-        elif amount < 0:
-            return "Invalid withdraw amount"
-        else:
-            self.balance -= amount
-            return self.balance
-
 class CurrentAccount(BankAccount):
 
     def __init__(self):
         self.balance = 0
 
+    def get_account(request):
+        return Account.objects.get(acc_owner=request.user)
 
-    def deposit(self, amount):
-        if amount < 0:
-            return "Invalid deposit amount"
-        else:
-            self.balance += amount
-            return self.balance
+    def deposit(self, amount, request):
+        account = self.get_account(request)
+        account.acc_balance += amount
+        account.save()
 
 
-    def withdraw(self, amount):
-        if amount < 0:
-            return "Invalid withdraw amount"
-        elif self.balance < amount:
-            return "Cannot withdraw beyond the current account balance"
-        else:
-            self.balance -= amount
-            return self.balance
+    def withdraw(self, amount, request):
+        account = self.get_account(request)
+        if account.acc_balance < amount:
+            raise ValueError("Cannot withdraw beyond the current account balance")
+        account.acc_balance -= amount
+        account.save()

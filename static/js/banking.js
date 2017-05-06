@@ -27,6 +27,17 @@ $(window).load(function(){
         $.scrollTo("section[name = account_create]");
     }
 
+    if (url = "http://carlif.pythonanywhere.com/account/withdraw/") {
+        $.scrollTo("section[name = withdraw]");
+    }
+
+    if (url = "http://carlif.pythonanywhere.com/account/deposit/") {
+        $.scrollTo("section[name = deposit]");
+    }
+
+    if (url = "http://carlif.pythonanywhere.com/account/transfer/") {
+        $.scrollTo("section[name = transfer]");
+    }
 
 });
 
