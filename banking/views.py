@@ -31,11 +31,8 @@ def register_page(request):
     variables = RequestContext(request, {
     'reg_form': form
     })
+    return render_to_response( 'registration.html', variables,)
 
-    return render_to_response(
-    'registration.html',
-    variables,
-    )
 
 def login_page(request):
     if request.method == "POST":
@@ -55,12 +52,15 @@ def login_page(request):
     })
     return render_to_response( 'login.html', variables )
 
+
 def about_page(request):
     return render_to_response( 'about.html' )
+
 
 def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
+
 
 #@login_required(login_url="login/")
 def home_page(request):
@@ -72,6 +72,8 @@ def home_page(request):
         'user': request.user
         })
     return render_to_response('index.html', variables)
+
+
 
 @login_required(login_url="/login/")
 def account_create_page(request):
@@ -100,8 +102,10 @@ def account_create_page(request):
     return render_to_response('account_create.html', variables)
 
 
+
 def get_account(request):
     return Account.objects.get(acc_owner=request.user)
+
 
 
 @login_required(login_url="/login/")
@@ -117,6 +121,7 @@ def account_page(request):
             'account': account
             })
         return render_to_response('account.html', variables)
+
 
 
 @login_required(login_url="/login/")
@@ -139,6 +144,7 @@ def deposit_page(request):
     return render_to_response( 'deposit.html', variables )
 
 
+
 @login_required(login_url="/login/")
 def withdraw_page(request):
     if request.method == "POST":
@@ -157,7 +163,6 @@ def withdraw_page(request):
         'account': account
         })
     return render_to_response( 'withdraw.html', variables )
-
 
 
 
