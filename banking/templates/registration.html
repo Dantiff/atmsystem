@@ -4,12 +4,13 @@
  <section id="register" class="parallax-section" name="reg_form">
 	<div class="container">
 		<div class="row">
-			<div class="wow fadeInUp col-md-7 col-sm-7" data-wow-delay="0.6s">
+			<div class="wow col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.6s">
 			    <h2>Register Here</h2>
-				<h3>Nunc eu nibh vel augue mollis tincidunt id efficitur tortor. Sed pulvinar est sit amet tellus iaculis hendrerit.</h3>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet consectetuer diam nonummy.</p>
+			    <p>Misty E-banking offers ease of access, secure transactions and 24-hour banking options. From small start-up companies to more established entities, small businesses rely on e-banking to eliminate runs to the bank and to make financial decisions with updated information.</p>
+				<h4 class="lobster">I was not inside the bank. But I am still not the only witness.<br><strong><span class="float-right"> -- Patty Hearst</span></span></strong></h4>
+                <br>
 			</div>
-			<div class="wow fadeInUp col-md-5 col-sm-5" data-wow-delay="1s">
+			<div class="wow fadeInUp col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="1s">
 				<form method="post" action="/register/">{% csrf_token %}
 					{{ reg_form }}
 					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
