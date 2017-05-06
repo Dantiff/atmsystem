@@ -18,15 +18,15 @@
 
 				<form action="." method="post"> {% csrf_token %}
 				    <label for="account">Trasfer from:</label>
-				    <input type="text" class="form-control" name="account" value="{{ account.acc_name }}"
+				    <input type="text" class="form-control" name="account" value="{{ account.acc_name }}" readonly>
 					{{ transfer_form }}
 					<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
-						<input name="submit" type="submit" class="form-control" id="submit" value="Tranfer">
+						<input name="submit" type="submit" class="form-control" id="submit" value="Transfer">
 					</div>
 				</form>
 			</div>
 
-		    <div class="wow fadeInUp hidden-xs col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+		    <div class="wow fadeInUp hidden-xs col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="1s">
               <blockquote class="lobster">
                   "When you're in a commodity business, the only way to thrive is to be a low-cost producer. And when you're selling money, you're in a commodity business."
                   <br><strong class="float-right">-- Duff McDonald</strong>

@@ -126,7 +126,7 @@ def deposit_page(request):
         if form.is_valid():
             amount = form.cleaned_data['amount']
             transaction = CurrentAccount
-            CurrentAccount.deposit(transaction, amount, request)
+            CurrentAccount.deposit(transaction, amount, request.user)
             return HttpResponseRedirect('/account/')
     else:
         form = DepositForm()
@@ -146,7 +146,7 @@ def withdraw_page(request):
         if form.is_valid():
             amount = form.cleaned_data['amount']
             transaction = CurrentAccount
-            CurrentAccount.withdraw(transaction, amount, request)
+            CurrentAccount.withdraw(transaction, amount, request.user)
             return HttpResponseRedirect('/account/')
     else:
         form = WithdrawForm()
@@ -168,14 +168,14 @@ def transfer_page(request):
         if form.is_valid():
             amount = form.cleaned_data['amount']
             recipient = form.cleaned_data['recipient']
-            acc_number = form.cleaned_data['accNumber']
+            accNumber = form.cleaned_data['accNumber']
 
             transaction = CurrentAccount
-            CurrentAccount.transfer(transaction, request, amount, recipient, acc_number)
+            CurrentAccount.transfer(transaction, request.user, amount, recipient, accNumber)
             return HttpResponseRedirect('/account/')
     else:
         form = TransferForm()
-        account = get_account(request)
+    account = get_account(request)
     variables = RequestContext(request, {
         'user': request.user,
         'transfer_form': form,

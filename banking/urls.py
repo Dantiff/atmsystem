@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^account/$', views.account_page),
     url(r'^account/deposit/$', views.deposit_page),
     url(r'^account/withdraw/$', views.withdraw_page),
-    url(r'^account/deposit/$', views.transfer_page),
+    url(r'^account/transfer/$', views.transfer_page),
 ]

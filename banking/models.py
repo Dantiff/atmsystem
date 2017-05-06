@@ -15,8 +15,8 @@ class UserProfile(models.Model):
 class Account(models.Model):
     acc_owner = models.ForeignKey('auth.User')
     acc_name = models.CharField(max_length=200)
-    acc_number = models.IntegerField()
-    acc_balance = models.IntegerField(blank=True, null=True)
+    acc_number = models.BigIntegerField()
+    acc_balance = models.BigIntegerField(blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     remove_date = models.DateTimeField(blank=True, null=True)
 

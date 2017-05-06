@@ -49,7 +49,7 @@ class TransferForm(forms.Form):
 
     def clean_recipient(self):
         try:
-            user = User.objects.get(username__iexact=self.cleaned_data['username'])
+            user = User.objects.get(username__iexact=self.cleaned_data['recipient'])
         except User.DoesNotExist:
             raise forms.ValidationError(_("The username provided does not exist. Please try the correct one."))
         return self.cleaned_data['recipient']
