@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+	    <div class="wow fadeInLeft col-md-offset-1 col-md-5 col-sm-8" data-wow-delay="0.9s">
+			<h2>Login</h2>
+			<h4 class="lobster">I was not inside the bank. But I am still not the only witness.<br><strong><span class="float-right"> -- Patty Hearst</span></span></strong></h4>
+            <br>
+            {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+            {% endif %}
+			<form action="/login/" method="post"> {% csrf_token %}
+				{{ login_form }}
+				<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
+					<input name="submit" type="submit" class="form-control" id="submit" value="LOGIN">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
