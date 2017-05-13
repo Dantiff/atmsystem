@@ -1,6 +1,8 @@
 *.pyc
 *~
 __pycache__
-myvenv
+appenv
+nenv
 db.sqlite3
 .DS_Store
+node_modules/
