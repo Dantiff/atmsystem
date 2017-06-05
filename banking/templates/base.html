@@ -62,6 +62,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#intro" class="smoothScroll">Home</a></li>
 				<li><a href="/account/create/" class="smoothScroll">Create Account</a></li>
+				{% if user.is_authenticated %}
                 <li class="dropdown">
                       <a class="smoothScroll dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
                       <ul class="dropdown-menu">
@@ -69,6 +70,7 @@
                         <li><a href="/account/">Go to account</a></li>
                       </ul>
                 </li>
+                {% endif %}
 				<li><a href="#about" class="smoothScroll">About</a></li>
 				{% if user.is_authenticated %}
                 <li><a class="maxim" href="/logout">Welcome {{ user.username }} (<span class="maxim">Logout</span>)</a>
